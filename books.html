@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - BookVerse</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://unpkg.com/papaparse@5/papaparse.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/books.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i data-lucide="book" class="navbar-icon"></i>
+                <a href="index.html" class="navbar-title">BookVerse</a>
+            </div>
+            
+            <ul class="navbar-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="header-container">
+            <h1 id="pageTitle" class="page-title">All Books</h1>
+            <p id="personDescription" class="page-subtitle">Explore our complete library</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Controls Section -->
+            <div class="controls-section">
+                <div class="search-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search books by title..."
+                    >
+                </div>
+                
+                <select id="genreFilter" class="genre-select">
+                    <option value="">All Genres</option>
+                </select>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>Loading books...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state hidden">
+                <i data-lucide="circle-alert" class="error-icon"></i>
+                <p id="errorMessage">Failed to load books</p>
+                <button id="retryBtn" class="retry-btn">Retry</button>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state hidden">
+                <i data-lucide="book" class="empty-icon"></i>
+                <p id="emptyMessage">No books match your search or filter</p>
+            </div>
+
+            <!-- Books Grid -->
+            <div id="booksGrid" class="books-grid">
+                <!-- Dynamically generated book cards -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Book Detail Modal -->
+    <div id="bookModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Book cover" class="modal-image">
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-detail">
+                        <strong>Author:</strong> <span id="modalAuthor"></span>
+                    </p>
+                    <p class="modal-detail">
+                        <strong>Genre:</strong> <span id="modalGenre" class="genre-badge"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-summary">
+                <strong>Summary:</strong>
+                <p id="modalSummary"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2026 BookVerse. Track our reading journey.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/sawant_sidhu/?hl=en" class="footer-link" title="Sidhu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/pratiksha_sawant_/?hl=en" class="footer-link" title="Pratu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/sawant.dhanashri.22.95/?hl=en" class="footer-link" title="Dhanu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="bookCardTemplate">
+        <div class="book-card">
+            <div class="book-card-image">
+                <img src="" alt="" onerror="this.src='https://placehold.co/400x600?text=No+Cover'">
+            </div>
+            <div class="book-card-content">
+                <h3 class="book-title"></h3>
+                <p class="book-author"></p>
+                <div class="book-genres">
+                    <span class="genre-tag"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/books.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

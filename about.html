@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - BookVerse</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://unpkg.com/papaparse@5/papaparse.min.js"></script>
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/about.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i data-lucide="book" class="navbar-icon"></i>
+                <a href="index.html" class="navbar-title">BookVerse</a>
+            </div>
+
+            <ul class="navbar-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">About Our Reading Journey</h1>
+            <p class="hero-subtitle">Explore the statistics of my sibling's
+                passionate reading journey and also recommend us your favourite books.</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="section-title">Our Collection</h2>
+            <p class="section-subtitle">Total books read by uss...</p>
+            <div class="stats-grid" id="statsGrid">
+                <!-- Dynamically generated stats cards -->
+            </div>
+            <div class="stats-loading" id="statsLoading">
+                <div class="spinner"></div>
+                <p>Loading collection stats...</p>
+            </div>
+            <div class="stats-error hidden" id="statsError">
+                <p>Could not load some reading statistics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendation Form Section -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="section-title">Share Your Favorite Book</h2>
+            <p class="section-subtitle">Help us discover new reads! Recommend a book to us.</p>
+
+            <form id="recommendationForm" class="recommendation-form" novalidate>
+                <div class="form-group">
+                    <label for="nameInput" class="form-label">Your Name</label>
+                    <input type="text" id="nameInput" class="form-input" placeholder="Enter your name" required>
+                    <span class="form-error hidden" id="nameError">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookNameInput" class="form-label">Book Name</label>
+                    <input type="text" id="bookNameInput" class="form-input" placeholder="Enter book title" required>
+                    <span class="form-error hidden" id="bookNameError">Please enter a book name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="messageInput" class="form-label">Your Message</label>
+                    <textarea id="messageInput" class="form-textarea"
+                        placeholder="Why do you recommend this book? What made it special?" rows="5"
+                        required></textarea>
+                    <span class="form-error hidden" id="messageError">Please share your thoughts</span>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Recommendation</button>
+                <div id="formStatusMessage" class="form-status hidden" aria-live="polite"></div>
+            </form>
+
+            <div class="form-success hidden" id="formSuccess">
+                <i data-lucide="check" width="48" height="48"></i>
+                <h3>Thank You!</h3>
+                <p>Your recommendation has been received. We'll review it soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2026 BookVerse. Track our reading journey.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/sawant_sidhu/?hl=en" class="footer-link" title="Sidhu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/pratiksha_sawant_/?hl=en" class="footer-link" title="Pratu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/sawant.dhanashri.22.95/?hl=en" class="footer-link" title="Dhanu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="statCardTemplate">
+        <div class="stat-card">
+            <div class="stat-icon">🕮</div>
+            <div class="stat-content">  
+                <h3 class="stat-name"></h3>
+                <p class="stat-number"></p>
+                <p class="stat-label"></p>
+            </div>
+        </div>
+    </template>
+
+    <template id="statCardErrorTemplate">
+        <div class="stat-card stat-error">
+            <div class="stat-icon">?</div>
+            <div class="stat-content">
+                <h3 class="stat-name"></h3>
+                <p class="stat-label">Unable to load</p>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <!-- EmailJS for form submission -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/about.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

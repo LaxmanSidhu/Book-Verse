@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookVerse - Track Your Reading Journey</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i data-lucide="book" class="navbar-icon"></i>
+                <a href="index.html" class="navbar-title">BookVerse</a>
+            </div>
+            
+            <ul class="navbar-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">We Track Our Reading Journey here 👇</h1>
+                <p class="hero-subtitle">Discover amazing books from different perspectives. Browse through the books we have read and explore curated collections.</p>
+                <a href="#cardsSection" class="hero-cta">Explore Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Person Cards Section -->
+    <section id="cardsSection" class="cards-section">
+        <div class="cards-container">
+            <h2 class="section-title">Our Readers</h2>
+            <p class="section-subtitle">These are my siblings — my biggest supporters and the people I cherish the most.</p>
+            <div class="cards-grid" id="cardsGrid">
+                <!-- Dynamically generated cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Read List Section -->
+    <section id="readListSection" class="read-list-section">
+        <!-- Dynamically generated read list banner -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2026 BookVerse. Track our reading journey.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/sawant_sidhu/?hl=en" class="footer-link" title="Sidhu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/pratiksha_sawant_/?hl=en" class="footer-link" title="Pratu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+                <a href="https://www.instagram.com/sawant.dhanashri.22.95/?hl=en" class="footer-link" title="Dhanu Instagram">
+                    <i data-lucide="camera"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="personCardTemplate">
+        <div class="reader-card">
+            <div class="card-image-wrapper">
+                <img src="" alt="" class="card-image" onerror="this.src='https://via.placeholder.com/300x300?text=Reader'">
+            </div>
+            <div class="card-content">
+                <h3 class="card-name"></h3>
+                <p class="card-description"></p>
+                <a href="" class="card-link">View Library →</a>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
